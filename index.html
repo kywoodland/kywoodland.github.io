@@ -11,6 +11,11 @@
     background-color: white;
     color: black;
 }
+
+#color-gen {
+    width: 200px;
+    height: 200px;
+}
     </style>
 
 </head>
@@ -32,11 +37,12 @@
 
 <!-- Displays result. -->
 <div class="result">
-Click image to randomly pick a color!<br><br>
   <span>HEX: </span>
   <br><br>
   <span>RGB: </span> 
 </div>
+
+<div id="color-gen"></div>
 
 <script>
 
@@ -86,7 +92,8 @@ img.addEventListener('click', function(e){
     p[1]+','+
     p[2]+')</span>';
   
-  document.body.style.background =rgbToHex(p[0],p[1],p[2]);
+  //document.body.style.background =rgbToHex(p[0],p[1],p[2]);
+  document.getElementById("color-gen").style.background =rgbToHex(p[0],p[1],p[2]);
   });
 },false);
 img.addEventListener('mousemove', function(e){
