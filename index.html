@@ -83,8 +83,10 @@ function getColorType() {
     else {
       colorType = "Two-tone";
     }
+    getColor(colorType);
   }
   document.getElementById("color-type-box").innerHTML = "Color Type: " + colorType;
+  getPaletteColor();
 
   //getColor(colorType);
   console.log(randomNum);
@@ -92,7 +94,7 @@ function getColorType() {
   console.log(colorType);
 }
 
-function getColor() {
+function getColor(colorType) {
   const image_array = [
     'blue_chao_palette.jpg',
     'brown_chao_palette.jpg',
@@ -107,9 +109,15 @@ function getColor() {
     'yellow_chao_palette.jpg',
   ];
 
-  const random_index = Math.floor(Math.random() * image_array.length);
-  const selected_image = image_array[random_index];
-  document.getElementById('imageguy').src = `./images/${selected_image}`;
+  if (colorType != "Standard") {
+    const random_index = Math.floor(Math.random() * image_array.length);
+    const selected_image = image_array[random_index];
+
+    document.getElementById('imageguy').src = `./images/${selected_image}`;
+  }
+  else {
+
+  }
 }
 
 function getYellow() {
@@ -136,6 +144,8 @@ function encodeImageFileAsURL() {
     fileReader.readAsDataURL(fileToLoad);
   }
 }
+
+function getPaletteColor() {
 
 var img = _('.thumbnail img'),
   result = _('.result'),
@@ -164,6 +174,8 @@ document.getElementById("getColor").addEventListener('click', function(e){
   document.getElementById("color-gen").style.background =rgbToHex(p[0],p[1],p[2]);
   });
 },false);
+
+}
 
 // preview but doesn't work?? idk
 img.addEventListener('mousemove', function(e){
