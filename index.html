@@ -35,14 +35,14 @@
 <!-- Makes canvas to work on. -->
 <canvas id="cs"></canvas>
 
-<!-- <button id="getColor" onclick="encodeImageFileAsURL()">Get Color</button>-->
+<button id="getColor" onclick="encodeImageFileAsURL()">Generate</button>
 <button id="color-type" onclick="getColorType()">Roll for Color Type</button>
 
 <div id="color-type-box">
   <span>Color Type: </span>
 </div>
 
-<button id="getColor">Get Color</button>
+<button onclick="getColor()">Get Color</button>
 
 <!-- Displays result. -->
 <div class="result">
@@ -60,6 +60,7 @@ const ctx = canvas.getContext('2d');
 
 //my stuff
 
+// roll to get the color type of the chao
 function getColorType() {
   var standardChance = 95;
   var specialChance = 5;
@@ -71,7 +72,6 @@ function getColorType() {
   var randomNumSpecial;
   randomNum = Math.floor(Math.random() * (100 - 1 + 1) + 1);
 
-  console.log(randomNum);
   if (randomNum < 96) {
     colorType = "Standard";
   }
@@ -91,6 +91,25 @@ function getColorType() {
   console.log(colorType);
 }
 
+function getColor() {
+  const image_array = [
+    'blue_chao_palette.jpg',
+    'brown_chao_palette.jpg',
+    'gray_chao_palette.jpg',
+    'green_chao_palette.jpg',
+    'lime_chao_palette.jpg',
+    'orange_chao_palette.jpg',
+    'pink_chao_palette.jpg',
+    'purple_chao_palette.jpg',
+    'red_chao_palette.jpg',
+    'sky_blue_chao_palette.jpg',
+    'yellow_chao_palette.jpg',
+  ];
+
+  const random_index = Math.floor(Math.random() * image_array.length);
+  const selected_image = image_array[random_index];
+  document.getElementById('imageguy').src = `./images/${selected_image}`;
+}
 
 //Converts uploaded image into base64.
 
