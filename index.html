@@ -24,7 +24,7 @@
 
 <!-- Input file from computer. -->
 <!-- <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" /> -->
-<button onclick="encodeImageFileAsURL()">Click me</button>
+<button onclick="encodeImageFileAsURL()">Click me to generate image</button>
 
 <!-- Shows image on screen. -->
 <div class="thumbnail">
@@ -34,6 +34,9 @@
 
 <!-- Makes canvas to work on. -->
 <canvas id="cs"></canvas>
+
+<!-- <button id="getColor" onclick="encodeImageFileAsURL()">Get Color</button>-->
+<button id="getColor">Get Color</button>
 
 <!-- Displays result. -->
 <div class="result">
@@ -67,14 +70,13 @@ function encodeImageFileAsURL() {
   }
 }
 
-
 var img = _('.thumbnail img'),
   canvas = _('#cs'),
   result = _('.result'),
   preview = _('.preview'),x = '',y = '';
   
  //Randomize between image's X and Y when it is clicked.
-img.addEventListener('click', function(e){
+document.getElementById("getColor").addEventListener('click', function(e){
   if(e.offsetX) {
  x = Math.floor(Math.random() * img.width+1);
 	y = Math.floor(Math.random() * img.height+1);
@@ -96,6 +98,7 @@ img.addEventListener('click', function(e){
   document.getElementById("color-gen").style.background =rgbToHex(p[0],p[1],p[2]);
   });
 },false);
+
 img.addEventListener('mousemove', function(e){
   if(e.offsetX) {
   x = e.offsetX;
@@ -113,6 +116,7 @@ img.addEventListener('mousemove', function(e){
   preview.style.background = rgbToHex(p[0],p[1],p[2]);
   });
 },false);
+
 function useCanvas(el,image,callback){
   el.width = image.width;
   el.height = image.height; 
@@ -120,16 +124,20 @@ function useCanvas(el,image,callback){
   .drawImage(image, 0, 0, image.width, image.height);
   return callback();
 }
+
 function _(el){
   return document.querySelector(el);
 }
+
 function componentToHex(c) {
   var hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
 }
+
 function rgbToHex(r, g, b) {
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
+
 function findPos(obj) {
   var curleft = 0, curtop = 0;
   if (obj.offsetParent) {
