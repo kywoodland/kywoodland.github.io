@@ -146,34 +146,33 @@ function encodeImageFileAsURL() {
 }
 
 function getPaletteColor() {
-
-var img = _('.thumbnail img'),
-  result = _('.result'),
-  preview = _('.preview'),x = '',y = '';
-  
- //Randomize between image's X and Y when it is clicked. --set this to be a button instead
-document.getElementById("getColor").addEventListener('click', function(e){
-  if(e.offsetX) {
- x = Math.floor(Math.random() * img.width+1);
-	y = Math.floor(Math.random() * img.height+1);
-  }
-  else if(e.layerX) {
- x = Math.floor(Math.random() * img.width+1);
-	y = Math.floor(Math.random() * img.height+1);
-  }
-  useCanvas(canvas,img,function(){
-  var p = canvas.getContext('2d')
-  .getImageData(x, y, 1, 1).data;
-  result.innerHTML = '<span>HEX: '+rgbToHex(p[0],p[1],p[2])+'</span><br><br>'+
-   '<span>RGB:  rgb('+
-    p[0]+','+
-    p[1]+','+
-    p[2]+')</span>';
-  
-  //document.body.style.background =rgbToHex(p[0],p[1],p[2]);
-  document.getElementById("color-gen").style.background =rgbToHex(p[0],p[1],p[2]);
-  });
-},false);
+  var img = _('.thumbnail img'),
+    result = _('.result'),
+    preview = _('.preview'),x = '',y = '';
+    
+  //Randomize between image's X and Y when it is clicked. --set this to be a button instead
+  //document.getElementById("getColor").addEventListener('click', function(e){
+    if(e.offsetX) {
+  x = Math.floor(Math.random() * img.width+1);
+    y = Math.floor(Math.random() * img.height+1);
+    }
+    else if(e.layerX) {
+  x = Math.floor(Math.random() * img.width+1);
+    y = Math.floor(Math.random() * img.height+1);
+    }
+    useCanvas(canvas,img,function(){
+    var p = canvas.getContext('2d')
+    .getImageData(x, y, 1, 1).data;
+    result.innerHTML = '<span>HEX: '+rgbToHex(p[0],p[1],p[2])+'</span><br><br>'+
+    '<span>RGB:  rgb('+
+      p[0]+','+
+      p[1]+','+
+      p[2]+')</span>';
+    
+    //document.body.style.background =rgbToHex(p[0],p[1],p[2]);
+    document.getElementById("color-gen").style.background =rgbToHex(p[0],p[1],p[2]);
+    });
+//},false);
 
 }
 
