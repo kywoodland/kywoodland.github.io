@@ -41,7 +41,7 @@
 </div>
 <button onclick="getYellow()">Click to generate Standard Accent Color (Yellow Shades)</button><br>
 <button onclick="getColor()">If Special, Click This</button><br><br>
-<button id="getColor" onclick="encodeImageFileAsURL()">Generate From Current Palette</button>
+<!-- <button id="getColor" onclick="encodeImageFileAsURL()">Generate From Current Palette</button>-->
 
 
 <!-- Displays result. -->
@@ -86,7 +86,7 @@ function getColorType() {
     getColor(colorType);
   }
   document.getElementById("color-type-box").innerHTML = "Color Type: " + colorType;
-  getPaletteColor();
+  //getPaletteColor();
 
   //getColor(colorType);
   console.log(randomNum);
@@ -128,7 +128,7 @@ function getYellow() {
 
 function encodeImageFileAsURL() {
 
-  //var filesSelected = document.getElementById("inputFileToLoad").files;
+  var filesSelected = document.getElementById("inputFileToLoad").files;
   var filesSelected = document.getElementById("standardChaoPalette").files;
   if (filesSelected.length > 0) {
     var fileToLoad = filesSelected[0];
