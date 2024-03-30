@@ -39,6 +39,7 @@
 <div id="color-type-box">
   <span>Color Type: </span>
 </div>
+<button onclick="getYellow()">Click to generate Standard Accent Color (Yellow Shades)</button><br>
 <button onclick="getColor()">If Special, Click This</button><br><br>
 <button id="getColor" onclick="encodeImageFileAsURL()">Generate From Current Palette</button>
 
@@ -109,6 +110,10 @@ function getColor() {
   const random_index = Math.floor(Math.random() * image_array.length);
   const selected_image = image_array[random_index];
   document.getElementById('imageguy').src = `./images/${selected_image}`;
+}
+
+function getYellow() {
+  document.getElementById('imageguy').src = `./images/starter_accent_color`;
 }
 
 //Converts uploaded image into base64.
