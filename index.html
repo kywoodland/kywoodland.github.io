@@ -29,7 +29,8 @@
 <!-- Shows image on screen. -->
 <div class="thumbnail">
   <div class="preview"></div>
-  <img id="imageguy" src="images\chao_starter_colors.png">
+  <!--<img id="imageguy" src="images\chao_starter_colors.png"> -->
+  <img id="imageguy" src="https://f2.toyhou.se/file/f2-toyhou-se/images/79900677_YvJGL9eLYgEFcf4.png">
 </div>
 
 <!-- Makes canvas to work on. -->
@@ -56,7 +57,6 @@
 <script>
 const canvas = document.querySelector('#cs');
 const ctx = canvas.getContext('2d');
-
 
 //my stuff
 
@@ -92,6 +92,7 @@ function getColorType() {
   console.log(colorType);
 }
 
+/*
 function getColor() {
   const image_array = [
     'blue_chao_palette.jpg',
@@ -113,8 +114,9 @@ function getColor() {
 }
 
 function getYellow() {
-  document.getElementById('imageguy').src = `./images/starter_accent_color.png`;
-}
+  //document.getElementById('imageguy').src = `./images/starter_accent_color.png`;
+  document.getElementById('imageguy').src = `https://f2.toyhou.se/file/f2-toyhou-se/images/79900659_h24O1Ma2Oq12TyJ.png`;
+}*/
 
 //Converts uploaded image into base64.
 
@@ -130,6 +132,7 @@ function encodeImageFileAsURL() {
       var srcData = fileLoadedEvent.target.result; // This is the base64 data.
   		//Setting the image on screen to be the base64 version of the image.    
       const imgg = document.getElementById("imageguy");
+      imgg.crossOrigin = "Anonymous";
     	imgg.src = srcData;
       
     }
@@ -137,7 +140,11 @@ function encodeImageFileAsURL() {
   }
 }
 
-var img = _('.thumbnail img'),
+/*var img = _('.thumbnail img'),
+  result = _('.result'),
+  preview = _('.preview'),x = '',y = '';*/
+
+var img = document.getElementById("imageguy"),
   result = _('.result'),
   preview = _('.preview'),x = '',y = '';
   
@@ -151,21 +158,23 @@ document.getElementById("getColor").addEventListener('click', function(e){
  x = Math.floor(Math.random() * img.width+1);
 	y = Math.floor(Math.random() * img.height+1);
   }
+
   useCanvas(canvas,img,function(){
-  var p = canvas.getContext('2d')
-  .getImageData(x, y, 1, 1).data;
-  result.innerHTML = '<span>HEX: '+rgbToHex(p[0],p[1],p[2])+'</span><br><br>'+
-   '<span>RGB:  rgb('+
-    p[0]+','+
-    p[1]+','+
-    p[2]+')</span>';
-  
-  //document.body.style.background =rgbToHex(p[0],p[1],p[2]);
-  document.getElementById("color-gen").style.background =rgbToHex(p[0],p[1],p[2]);
+    var p = canvas.getContext('2d')
+    .getImageData(x, y, 1, 1).data;
+    result.innerHTML = '<span>HEX: '+rgbToHex(p[0],p[1],p[2])+'</span><br><br>'+
+    '<span>RGB:  rgb('+
+      p[0]+','+
+      p[1]+','+
+      p[2]+')</span>';
+    
+    //document.body.style.background =rgbToHex(p[0],p[1],p[2]);
+    document.getElementById("color-gen").style.background =rgbToHex(p[0],p[1],p[2]);
   });
 },false);
 
 // preview but doesn't work?? idk
+/*
 img.addEventListener('mousemove', function(e){
   if(e.offsetX) {
   x = e.offsetX;
@@ -184,7 +193,7 @@ img.addEventListener('mousemove', function(e){
   preview.style.background = rgbToHex(p[0],p[1],p[2]);
   });
 },false);
-
+*/
 function useCanvas(el,image,callback){
   el.width = image.width;
   el.height = image.height; 
