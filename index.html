@@ -35,14 +35,13 @@
 <!-- Makes canvas to work on. -->
 <canvas id="cs"></canvas>
 
-<button id="getColor" onclick="encodeImageFileAsURL()">Generate</button>
-<button id="color-type" onclick="getColorType()">Roll for Color Type</button>
-
+<button id="color-type" onclick="getColorType()">Roll for Color Type FIRST</button><br><br>
 <div id="color-type-box">
   <span>Color Type: </span>
 </div>
+<button onclick="getColor()">If Special, Click This</button><br><br>
+<button id="getColor" onclick="encodeImageFileAsURL()">Generate From Current Palette</button>
 
-<button onclick="getColor()">Get Color</button>
 
 <!-- Displays result. -->
 <div class="result">
@@ -86,6 +85,7 @@ function getColorType() {
   }
   document.getElementById("color-type-box").innerHTML = "Color Type: " + colorType;
 
+  getColor(colorType);
   console.log(randomNum);
   console.log(randomNumSpecial);
   console.log(colorType);
