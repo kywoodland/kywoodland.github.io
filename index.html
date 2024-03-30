@@ -36,6 +36,12 @@
 <canvas id="cs"></canvas>
 
 <!-- <button id="getColor" onclick="encodeImageFileAsURL()">Get Color</button>-->
+<button id="color-type" onclick="getColorType()">Roll for Color Type</button>
+
+<div class="color-type-box">
+  <span>Color Type: </span>
+</div>
+
 <button id="getColor">Get Color</button>
 
 <!-- Displays result. -->
@@ -48,6 +54,25 @@
 <div id="color-gen"></div>
 
 <script>
+const canvas = document.querySelector('#cs');
+const ctx = canvas.getContext('2d');
+
+
+//my stuff
+
+function getColorType() {
+  var standardChance = 95;
+  var specialChance = 5;
+  var monoChance = 75;
+  var twotoneChance = 25;
+
+  var randomNum;
+
+  randomNum = (Math.random() + 1) * 100;
+
+  console.log(randomNum);
+}
+
 
 //Converts uploaded image into base64.
 
@@ -71,11 +96,10 @@ function encodeImageFileAsURL() {
 }
 
 var img = _('.thumbnail img'),
-  canvas = _('#cs'),
   result = _('.result'),
   preview = _('.preview'),x = '',y = '';
   
- //Randomize between image's X and Y when it is clicked.
+ //Randomize between image's X and Y when it is clicked. --set this to be a button instead
 document.getElementById("getColor").addEventListener('click', function(e){
   if(e.offsetX) {
  x = Math.floor(Math.random() * img.width+1);
@@ -99,6 +123,7 @@ document.getElementById("getColor").addEventListener('click', function(e){
   });
 },false);
 
+// preview but doesn't work?? idk
 img.addEventListener('mousemove', function(e){
   if(e.offsetX) {
   x = e.offsetX;
@@ -113,6 +138,7 @@ img.addEventListener('mousemove', function(e){
   
   var p = canvas.getContext('2d')
   .getImageData(x, y, 1, 1).data;
+
   preview.style.background = rgbToHex(p[0],p[1],p[2]);
   });
 },false);
