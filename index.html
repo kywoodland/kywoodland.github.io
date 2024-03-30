@@ -65,11 +65,30 @@ function getColorType() {
   var specialChance = 5;
   var monoChance = 75;
   var twotoneChance = 25;
+  var colorType;
 
   var randomNum;
-  randomNum = Math.floor(Math.random() * (100 - 1 + 1) + 1)
+  var randomNumSpecial;
+  randomNum = Math.floor(Math.random() * (100 - 1 + 1) + 1);
 
   console.log(randomNum);
+  if (randomNum < 96) {
+    colorType = "Standard";
+  }
+  else {
+    randomNumSpecial = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+    if (randomNumSpecial < 76) {
+      colorType = "Mono-tone";
+    }
+    else {
+      colorType = "Two-tone";
+    }
+  }
+  document.getElementById("color-type-box").innerHTML = "Color Type: " + colorType;
+
+  console.log(randomNum);
+  console.log(randomNumSpecial);
+  console.log(colorType);
 }
 
 
